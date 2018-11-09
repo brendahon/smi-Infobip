@@ -7,12 +7,12 @@ let express = require('express'),
 
     mongoose.Promise = global.Promise;
 
-    var dbUrl = eval(config.DB);
+    var dbUrl = process.env.MONGODB_URI;
 
     console.log("dbUrl: " + dbUrl);
-    console.log("dbUrl.toString(): " + dbUrl.toString());
 
-    mongoose.connect(dbUrl.toString()).then(
+
+    mongoose.connect(process.env.MONGODB_URI).then(
       () => {console.log('Database is connected') },
       err => { console.log('Can not connect to the database'+ err)}
     );
