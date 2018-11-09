@@ -7,7 +7,9 @@ let express = require('express'),
 
     mongoose.Promise = global.Promise;
 
-    mongoose.connect(config.DB).then(
+    var dbUrl = eval(process.env.MONGODB_URI);
+
+    mongoose.connect(dbUrl).then(
       () => {console.log('Database is connected') },
       err => { console.log('Can not connect to the database'+ err)}
     );
